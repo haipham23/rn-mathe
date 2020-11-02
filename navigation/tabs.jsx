@@ -20,27 +20,37 @@ const Tabs = () => {
     <Tab.Navigator
       tabOptions={tabOptions}
       screenOptions={({ route }) => ({
+        // eslint-disable-next-line react/prop-types
         tabBarIcon: ({ focused }) => {
           const tintColor = focused ? COLORS.lightBlue : COLORS.gray;
 
           switch (route.name) {
             case 'Home':
-              return (<Ionicons name="md-checkmark-circle" size={32} color={tintColor} />);
+              return (
+                <Ionicons
+                  name="md-checkmark-circle"
+                  size={32}
+                  color={tintColor}
+                />
+              );
 
             case 'Settings':
-              return (<Ionicons name="md-checkmark-circle" size={32} color={tintColor} />);
+              return (
+                <Ionicons
+                  name="md-checkmark-circle"
+                  size={32}
+                  color={tintColor}
+                />
+              );
+
+            default:
+              return null;
           }
         }
       })}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-      />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 };

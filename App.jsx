@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
 import { Auth } from './screens';
-import Tabs from "./navigation/tabs";
+import Tabs from './navigation/tabs';
 
 const theme = {
   ...DefaultTheme,
@@ -23,13 +23,17 @@ const App = () => {
         initialRouteName="Auth"
       >
         {/* Screens */}
-        <Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{ headerShown: false }}
+        />
 
         {/* Tabs */}
         <Stack.Screen name="Home" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 export default App;

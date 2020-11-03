@@ -6,6 +6,8 @@ import { quiz } from '../fixtures';
 
 const Question = () => {
   const [idx, setIdx] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [grade, setGrade] = useState(null);
 
   const maxItem = quiz.list.length - 1;
   const currentQuiz = quiz.list[idx];
@@ -22,6 +24,72 @@ const Question = () => {
     }
   };
 
+  const selectAnswer = ({ qId, aId }) => {
+    setAnswers({
+      ...answers,
+      [qId]: aId
+    });
+  };
+
+  const calculate = () => {
+    const thisGrade = quiz.list.reduce(
+      (total, { id, answer }) => (answer === answers[id] ? total + 1 : total),
+      0
+    );
+
+    setGrade(thisGrade);
+  };
+
+  const reset = () => {
+    setIdx(0);
+    setAnswers({});
+    setGrade(null);
+  };
+
+  if (typeof grade === 'number') {
+    return (
+      <SafeAreaView style={{ flex: 1 }}>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: SIZES.padding
+          }}
+        >
+          <Text
+            style={{ fontSize: 20 }}
+          >{`${grade} / ${quiz.list.length}`}</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginHorizontal: 30
+          }}
+        >
+          <TouchableOpacity
+            style={{
+              backgroundColor: COLORS.lightGray3,
+              borderRadius: 2,
+              margin: 10,
+              width: '100%'
+            }}
+            onPress={reset}
+          >
+            <View
+              style={{
+                padding: 10
+              }}
+            >
+              <Text style={{ textAlign: 'center' }}>Reset</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ padding: SIZES.padding }}>
@@ -30,18 +98,30 @@ const Question = () => {
       <View style={{ flex: 1 }}>
         {currentQuiz.options.map(({ id, text }) => (
           <TouchableOpacity
+            key={id}
             style={{
-              backgroundColor: COLORS.lightGray3,
+              backgroundColor:
+                answers[currentQuiz.id] === id
+                  ? COLORS.primary
+                  : COLORS.lightGray3,
               borderRadius: 2,
               margin: 10
             }}
+            onPress={() => selectAnswer({ qId: currentQuiz.id, aId: id })}
           >
             <View
               style={{
                 padding: 10
               }}
             >
-              <Text style={{}}>{`${id}. ${text}`}</Text>
+              <Text
+                style={{
+                  color:
+                    answers[currentQuiz.id] === id ? COLORS.white : COLORS.black
+                }}
+              >
+                {`${id}. ${text}`}
+              </Text>
             </View>
           </TouchableOpacity>
         ))}
@@ -55,7 +135,7 @@ const Question = () => {
       >
         <TouchableOpacity
           style={{
-            backgroundColor: COLORS.lightGray3,
+            backgroundColor: idx > 0 ? COLORS.lightGray3 : COLORS.white,
             borderRadius: 2,
             margin: 10
           }}
@@ -70,23 +150,56 @@ const Question = () => {
             <Text style={{}}>Back</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: COLORS.primary,
-            borderRadius: 2,
-            margin: 10
-          }}
-          onPress={goNext}
-          disabled={idx >= maxItem}
-        >
-          <View
+        {idx < maxItem && (
+          <TouchableOpacity
             style={{
-              padding: 10
+              backgroundColor: COLORS.primary,
+              borderRadius: 2,
+              margin: 10
             }}
+            onPress={goNext}
+            disabled={!answers[currentQuiz.id]}
           >
-            <Text style={{}}>Next</Text>
-          </View>
-        </TouchableOpacity>
+            <View
+              style={{
+                padding: 10
+              }}
+            >
+              <Text
+                style={{
+                  color: COLORS.white
+                }}
+              >
+                Next
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
+        {idx === maxItem && (
+          <TouchableOpacity
+            style={{
+              backgroundColor: COLORS.primary,
+              borderRadius: 2,
+              margin: 10
+            }}
+            onPress={calculate}
+            disabled={!answers[currentQuiz.id]}
+          >
+            <View
+              style={{
+                padding: 10
+              }}
+            >
+              <Text
+                style={{
+                  color: COLORS.white
+                }}
+              >
+                Done
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
     </SafeAreaView>
   );

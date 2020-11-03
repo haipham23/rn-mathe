@@ -6,88 +6,97 @@ export default {
   total: 20,
   list: [
     {
-      id: 1,
-      question:
-        'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros. Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat. In congue. Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst.',
+      id: 'q-1',
+      question: 'What is the name for the Jewish New Year?',
       options: [
         {
-          id: 1,
-          text: 'first answer',
-          isAnswer: false
+          id: 'a',
+          text: 'Hanukkah'
         },
         {
-          id: 2,
-          text: 'first answer',
-          isAnswer: false
+          id: 'b',
+          text: 'Yom Kippur'
         },
         {
-          id: 3,
-          text: 'first answer',
-          isAnswer: true
+          id: 'c',
+          text: 'Kwanza'
         },
         {
-          id: 4,
-          text: 'first answer',
-          isAnswer: false
+          id: 'd',
+          text: 'Rosh Hashanah'
         }
       ],
-      isMultiple: false
+      answer: 'd'
     },
     {
-      id: 2,
-      question:
-        'Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',
+      id: 'q-2',
+      question: 'How many blue stripes are there on the U.S. flag?',
       options: [
         {
-          id: 1,
-          text: 'first answer',
-          isAnswer: false
+          id: 'a',
+          text: '6'
         },
         {
-          id: 2,
-          text: 'first answer',
-          isAnswer: true
+          id: 'b',
+          text: '7'
         },
         {
-          id: 3,
-          text: 'first answer',
-          isAnswer: true
+          id: 'c',
+          text: '13'
         },
         {
-          id: 4,
-          text: 'first answer',
-          isAnswer: false
+          id: 'd',
+          text: '0'
         }
       ],
-      isMultiple: true
+      answer: 'd'
     },
     {
-      id: 2,
+      id: 'q-3',
       question:
-        'Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.',
+        'Which one of these characters is not friends with Harry Potter?',
       options: [
         {
-          id: 1,
-          text: 'first answer',
-          isAnswer: true
+          id: 'a',
+          text: 'Ron Weasley'
         },
         {
-          id: 2,
-          text: 'first answer',
-          isAnswer: false
+          id: 'b',
+          text: 'Neville Longbottom'
         },
         {
-          id: 3,
-          text: 'first answer',
-          isAnswer: false
+          id: 'c',
+          text: 'Draco Malfoy'
         },
         {
-          id: 4,
-          text: 'first answer',
-          isAnswer: false
+          id: 'd',
+          text: 'Hermione Granger'
         }
       ],
-      isMultiple: false
+      answer: 'c'
+    },
+    {
+      id: 'q-4',
+      question: 'What is the color of Donald Duck’s bowtie?',
+      options: [
+        {
+          id: 'a',
+          text: 'Red'
+        },
+        {
+          id: 'b',
+          text: 'Yellow'
+        },
+        {
+          id: 'c',
+          text: 'Blue'
+        },
+        {
+          id: 'd',
+          text: 'White'
+        }
+      ],
+      answer: 'a'
     }
   ]
 };

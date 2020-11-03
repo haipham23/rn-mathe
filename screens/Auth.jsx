@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 
-import { SIZES, COLORS, FONTS } from '../constants';
+import { SIZES, COLORS } from '../constants';
 
 const Auth = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
@@ -37,8 +37,7 @@ const Auth = ({ navigation }) => (
           <Text
             style={{
               marginLeft: SIZES.base,
-              color: COLORS.white,
-              ...FONTS.body3
+              color: COLORS.white
             }}
           >
             Login

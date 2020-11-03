@@ -57,9 +57,12 @@ const Question = () => {
             padding: SIZES.padding
           }}
         >
-          <Text
-            style={{ fontSize: 20 }}
-          >{`${grade} / ${quiz.list.length}`}</Text>
+          <Text style={{ fontSize: 16 }}>
+            Congratulations! Your final score is
+          </Text>
+          <Text style={{ fontSize: 20, marginTop: 10 }}>
+            {`${grade} / ${quiz.list.length}`}
+          </Text>
         </View>
         <View
           style={{

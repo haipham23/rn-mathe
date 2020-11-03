@@ -9,9 +9,10 @@ const Tab = createBottomTabNavigator();
 
 const tabOptions = {
   showLabel: false,
+  activeTintColor: COLORS.lightBlue,
+  inactiveTintColor: COLORS.gray,
   style: {
-    height: '10%',
-    backgroundColor: 'black'
+    height: '10%'
   }
 };
 
@@ -26,21 +27,11 @@ const Tabs = () => {
 
           switch (route.name) {
             case 'Home':
-              return (
-                <Ionicons
-                  name="md-checkmark-circle"
-                  size={32}
-                  color={tintColor}
-                />
-              );
+              return <Ionicons name="md-home" size={32} color={tintColor} />;
 
             case 'Settings':
               return (
-                <Ionicons
-                  name="md-checkmark-circle"
-                  size={32}
-                  color={tintColor}
-                />
+                <Ionicons name="md-settings" size={32} color={tintColor} />
               );
 
             default:

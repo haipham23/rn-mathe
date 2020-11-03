@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import { Auth } from './screens';
+import { Auth, Question } from './screens';
 import Tabs from './navigation/tabs';
 
 const theme = {
@@ -27,6 +27,11 @@ const App = () => {
           name="Auth"
           component={Auth}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Question"
+          component={Question}
+          options={{ headerShown: true }}
         />
 
         {/* Tabs */}
